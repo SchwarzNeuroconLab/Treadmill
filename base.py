@@ -33,15 +33,18 @@ class Treadmill:
 		print(f"Belt length: {round(self.belt_length, 1)}mm")
 		self.calibrated = True
 	def get_position(self, total = False):
-		''' Function to get the current position of the Treadmill.'''
+		''' Function to get the current position of the Treadmill.
+			If total is not set, the number of rounds are not counted.'''
 		if not total and not self.calibrated: raise Exception("For belt positions the Treadmill has to be calibrated. Please run Treadmill.calibrate()")
 		if total: return self.rotation.read()*self.radius
 		else: return ((self.rotation.read() - self.offset)*self.radius) % self.belt_length
 	class RotaryEncoder:
 		def __init__(self):
+			# Currently loads a task from global. This could instead be changed to create it dynamically.
+			# However the documentation on that is truly horrible.
 			ptask = ni.system.storage.persisted_task.PersistedTask('Treadmill Position')
 			self.task = ptask.load()
-			self.task.start()
+			self.task.start()	# This sets the counter to 0 and starts tracking the position.
 			atexit.register(self.close)
 		def read(self):
 			return self.task.read()
@@ -50,7 +53,7 @@ class Treadmill:
 	class Light:
 		def __init__(self, channel):
 			self.channel = channel
-			self.limit = 5
+			self.limit = 5	# Cutoff since signal is analog
 			self.task = ni.Task()
 			self.task.ai_channels.add_ai_voltage_chan(self.channel)
 			atexit.register(self.close)
