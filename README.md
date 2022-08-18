@@ -1,15 +1,18 @@
 # Treadmill
 Repository for the Treadmill for live experiments
 ## Setup
-### 1. Install Ni Software
-### 2. Create Angular Position Task
-#### 2.1 Open 'Ni Max'
-#### 2.2 Select your device
-#### 2.3 Click on 'Create Task'
-#### 2.4 Under 'Acquire Signals' / 'Counter Input' / 'Position' select 'Angular Position'
-#### 2.5 Select 'ctr0' and click 'Next'
-#### 2.6 Name the Task 'Treadmill Position' and click 'Finish'
-#### 2.7 Change the options to the following:
-##### -> The Input Terminals should be changed to the inputs you use!
-#### 2.8 Click 'Save'
-### 3. Run test.py
+1. Install Ni Software
+2. Create Angular Position Task
+   - Open 'Ni Max'
+   - Select your device
+   - Click on 'Create Task'
+   - Under 'Acquire Signals' / 'Counter Input' / 'Position' select 'Angular Position'
+   - Select 'ctr0' and click 'Next'
+   - Name the Task 'Treadmill Position' and click 'Finish'
+   - Change the options to the following:
+     - > The Input Terminals should be changed to the inputs you use!
+     - ![Settings for Task](https://github.com/TimLeffke/Treadmill/blob/main/task_settings.jpg?raw=true)
+   - Click 'Save'
+3. Install Python bindings for Ni
+   - In a fresh anaconda enviroment run 'pip install nidaqmx'
+4. Run 'test.py'
