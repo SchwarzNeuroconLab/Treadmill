@@ -1,7 +1,7 @@
 # Treadmill
 Repository for the Treadmill for live experiments
 ## Setup
-1. Install Ni Software
+1. Install Ni Software (https://www.ni.com/de-de/support/downloads/drivers/download.ni-daqmx.html)
 2. Create Angular Position Task
    - Open 'Ni Max'
    - Select your device
