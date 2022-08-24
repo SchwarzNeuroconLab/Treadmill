@@ -1,14 +1,9 @@
-""" Caution!!! Untested! """
-
-
-
-
 from base import Treadmill
 import numpy as np
 from time import time
 
 channel = 'Dev1/ai0'
-bit_size = 1000
+bit_size = 10000
 
 
 belt_length = input("How long is the belt in mm? (Press enter without input to start calibration) ")
@@ -29,8 +24,8 @@ try:
 	while True:
 		for i in range(bit_size):
 			timecode[i] = time()		
-			data[i] == t.get_position()
+			data[i] = t.get_position()
 		np.savez(f"data_{chunk}", data = data, timecode = timecode)
 		chunk += 1
 finally:
-	np.savez(f"data_{chunk}", data = data[:i], timecode = timecode[:i])
+	np.savez(f"data_{chunk}", position = data[:i], timecode = timecode[:i])
